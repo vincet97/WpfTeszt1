@@ -30,6 +30,7 @@ namespace WpfTeszt1.Views
             InitializeComponent();
             ViewModel = new MainWindowViewModel();
             this.DataContext = ViewModel;
+            this.Closed += new EventHandler(MainWindow_Closed);
         }
 
         private void SpeedCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,6 +48,14 @@ namespace WpfTeszt1.Views
         private void FileSelectButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        void MainWindow_Closed(object sender, EventArgs e)
+        {
+            if(ViewModel.Tracking == "Tracking")
+            
+            {
+                ViewModel.t1.Abort();
+            }
         }
     }
 }
