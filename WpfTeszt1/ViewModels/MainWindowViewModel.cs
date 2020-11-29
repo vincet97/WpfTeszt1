@@ -17,11 +17,21 @@ namespace WpfTeszt1.ViewModels
 {
     public class MainWindowViewModel : MyNotifyPropertyChanged
     {
-
-        
         public RelayCommand LoadProfileCommand { get; set; }
         public RelayCommand SaveProfileCommand { get; set; }
         public RelayCommand NewProfileCommand { get; set; }
+        public String ProfileName {
+            get { return _loadedProfile.Name; }
+            set
+            {
+                if (value != null)
+                {
+                    _loadedProfile.Name = value;
+                    NotifyPropertyChanged();
+                }
+            }
+
+        }
 
         public ObservableCollection<Shortcut> _scList;
         public ObservableCollection<Shortcut> ScList
@@ -84,7 +94,7 @@ namespace WpfTeszt1.ViewModels
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            Hook.Pr = ScList;
+            Hook.Sc = ScList;
             Thread t1 = new Thread(Hook.Init);
             t1.Start();
 
