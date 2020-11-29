@@ -17,6 +17,7 @@ namespace WpfTeszt1.Helpers
         }
         public static void saveData(Profile p)
         {
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"\Profile");
             string jsonString = JsonSerializer.Serialize(p);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\Profile\" + p.Name + @".txt", jsonString);
         }

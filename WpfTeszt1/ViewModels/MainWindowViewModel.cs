@@ -96,18 +96,22 @@ namespace WpfTeszt1.ViewModels
             OpenFileDialog o = new OpenFileDialog();
             o.InitialDirectory=AppDomain.CurrentDomain.BaseDirectory + @"Profiles\";
             o.ShowDialog();
-            String sr = o.FileName;
-            System.Diagnostics.Debug.WriteLine("Updated : " + sr);
+            if(o.FileName != "")
+            {
+                String sr = o.FileName;
+                System.Diagnostics.Debug.WriteLine("Updated : " + sr);
 
-            _loadedProfile = DataService.loadData(sr);
-            ScList.Clear();
-            ScList = DataService.updateScList(_loadedProfile);
+                _loadedProfile = DataService.loadData(sr);
+                ScList.Clear();
+                ScList = DataService.updateScList(_loadedProfile);
+            }
+            
 
 
         }
         public void SaveProfile(object parameter)
         {
-
+            
             _loadedProfile = DataService.updateProfile(_loadedProfile, ScList);
             string jsonString = JsonSerializer.Serialize(_loadedProfile);
             DataService.saveData(_loadedProfile);
