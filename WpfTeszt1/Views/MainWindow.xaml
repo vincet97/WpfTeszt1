@@ -6,11 +6,49 @@
         xmlns:local="clr-namespace:WpfTeszt1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid x:Name="ContentArea" Margin="10,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button x:Name="FileSelectButton" 
+                        Command=""
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Height="50" 
+                        Width="80"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="20,10,0,10">Button1
+        </Button>
+        <Button x:Name="SaveProfileButton" 
+                        
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Height="50" 
+                        Width="80"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="20,10,0,10">Button2
+        </Button>
+        <Button x:Name="NewProfileButton" 
+                        
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Height="50" 
+                        Width="80"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="20,10,0,10">Button3
+        </Button>
+        <Grid Grid.ColumnSpan="4" Grid.Row="1" >
             <DataGrid
                 x:Uid="DataTable"
                 AutoGenerateColumns="False"
