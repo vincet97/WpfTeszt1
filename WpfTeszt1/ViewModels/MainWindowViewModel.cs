@@ -126,13 +126,10 @@ namespace WpfTeszt1.ViewModels
         }
         public void SaveProfile(object parameter)
         {
-            System.Diagnostics.Debug.WriteLine("Saved");
-            foreach (var sc in ScList)
-            {
-                _loadedProfile.ShortCuts.Add(sc);
-            }
+
+            _loadedProfile = DataService.updateProfile(_loadedProfile, ScList);
             string jsonString = JsonSerializer.Serialize(_loadedProfile);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt", jsonString);
+            DataService.saveData(_loadedProfile);
         }
         public void NewProfile(object parameter)
         {

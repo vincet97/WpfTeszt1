@@ -19,6 +19,12 @@ namespace WpfTeszt1.Helpers
             Profile _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
             return _loadedProfile;
         }
+        public static void saveData(Profile p)
+        {
+            string jsonString = JsonSerializer.Serialize(p);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\Profile\" + p.Name + @".txt", jsonString);
+        }
+
         public static ObservableCollection<Shortcut> updateScList(Profile p)
         {
             ObservableCollection<Shortcut> temp = new ObservableCollection<Shortcut>();
@@ -27,6 +33,14 @@ namespace WpfTeszt1.Helpers
                 temp.Add(sc);
             }
             return temp;
+        }
+        public static Profile updateProfile(Profile p, ObservableCollection<Shortcut> sclist)
+        {
+           
+
+            p.ShortCuts = sclist;
+            
+            return p;
         }
     }
 }
