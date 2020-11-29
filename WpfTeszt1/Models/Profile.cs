@@ -11,7 +11,7 @@ namespace WpfTeszt1.Models
     {
 
 
-        public string Path { get; set; }
+
         public ICollection<Shortcut> ShortCuts { get; set; }
 
         public String Name { get; set; }
