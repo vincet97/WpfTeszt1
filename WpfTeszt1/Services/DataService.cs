@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.Json;
 using WpfTeszt1.Models;
 
-namespace WpfTeszt1.Helpers
+namespace WpfTeszt1.Services
 {
     class DataService
     {

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Text.Json;
 using Microsoft.Win32;
+using WpfTeszt1.Services;
 
 namespace WpfTeszt1.ViewModels
 {
