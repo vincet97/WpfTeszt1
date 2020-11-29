@@ -49,6 +49,9 @@
                         Grid.Column="2"
                         Margin="20,10,0,10">Button3
         </Button>
+        <TextBox
+            x:Name="ProfileText" Text="{Binding ProfileName,Mode=TwoWay}" Grid.Row="0" Grid.Column="3" Width="200" >
+        </TextBox>
         <Grid Grid.ColumnSpan="4" Grid.Row="1" >
             <DataGrid
                 x:Uid="DataTable"
