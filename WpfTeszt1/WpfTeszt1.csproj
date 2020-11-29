@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\MyNotifyPropertyChanged.cs" />
+    <Compile Include="Helpers\ObservableCollectionConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Shortcut.cs" />

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfTeszt1.ViewModels;
 
 namespace WpfTeszt1.Views
 {
@@ -20,9 +21,29 @@ namespace WpfTeszt1.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel ViewModel { get; set; }
         public MainWindow()
-        {
+        {   
+
             InitializeComponent();
+            ViewModel = new MainWindowViewModel();
+            this.DataContext = ViewModel;
+        }
+
+        private void ModifCombo1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Az Argumentek");
+            System.Diagnostics.Debug.WriteLine(e.ToString());
+        }
+
+        private void ModifCombo2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void SpeedCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

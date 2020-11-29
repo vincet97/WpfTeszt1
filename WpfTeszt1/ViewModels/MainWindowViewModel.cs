@@ -15,13 +15,13 @@ namespace WpfTeszt1.ViewModels
 
         public RelayCommand UpdateCommand { get; set; }
 
-        public ObservableCollection<Shortcut> _source;
-        public ObservableCollection<Shortcut> Source
+        public ObservableCollection<Shortcut> _scList;
+        public ObservableCollection<Shortcut> ScList
         {
-            get { return _source; }
+            get { return _scList; }
             set
             {
-                _source = value;
+                _scList = value;
                 NotifyPropertyChanged();
             }
         }
@@ -41,7 +41,7 @@ namespace WpfTeszt1.ViewModels
             UpdateCommand = new RelayCommand(UpdateShortcut);
             _loadedProfile = new Profile();
             _loadedProfile.Name = "First";
-            _source = new ObservableCollection<Shortcut>();
+            _scList = new ObservableCollection<Shortcut>();
             Shortcut c1 = new Shortcut()
             {
                 Text = "Csami okos",
@@ -69,9 +69,9 @@ namespace WpfTeszt1.ViewModels
                 Speed = "0",
                 IsActive = false
             };
-            Source.Add(c1);
-            Source.Add(c2);
-            Source.Add(c3);
+            ScList.Add(c1);
+            ScList.Add(c2);
+            ScList.Add(c3);
 
 
         }
