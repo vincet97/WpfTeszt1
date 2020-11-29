@@ -5,60 +5,110 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTeszt1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
-    <Grid x:Name="ContentArea" Margin="10,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top">
+        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
+
+    <Grid x:Name="ContentArea"  Margin="10,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="{Binding ActualWidth, 
+              RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" 
+      Height="{Binding ActualHeight, 
+              RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}" >
+        <Grid.Resources>
+            <Style 
+                TargetType="Button" x:Key="NewGameButtonStyle">
+                <Setter Property="FontFamily" Value="Resources/teen bd.ttf#Teen" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border BorderThickness="2" 
+                                    CornerRadius="4"
+                                    Padding="3"
+                                    x:Name="ButtonBorder"
+                                    Background="AliceBlue"
+                                >
+                                    <Border.BorderBrush>
+                                        <SolidColorBrush x:Name="ButtonBorderBrush" Color="Black"/>
+                                    </Border.BorderBrush>
+                                    <ContentPresenter VerticalAlignment="Center"
+                                      Margin="4,2" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#C0C0C0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Button x:Name="FileSelectButton" 
+                        Content="LoadProfile"
                         Command="{Binding LoadProfileCommand}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
-                        Height="50" 
-                        Width="80"
+                        HorizontalContentAlignment="Center"
+                        Height="40" 
+                        Width="120"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="20,10,0,10"
-                        >Button1
+                        Margin="20,10,0,10"            
+                >
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource NewGameButtonStyle}"/>
+            </Button.Style>
         </Button>
         <Button x:Name="SaveProfileButton" 
+                        Content="SaveProfile"
                         Command="{Binding SaveProfileCommand}"
+                        HorizontalContentAlignment="Center"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
-                        Height="50" 
-                        Width="80"
+                        Height="40" 
+                        Width="120"
                         Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="20,10,0,10">Button2
+                        Grid.Column="0"
+                        Margin="180,10,0,10">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource NewGameButtonStyle}"/>
+            </Button.Style>
         </Button>
         <Button x:Name="NewProfileButton" 
                         Command="{Binding NewProfileCommand}"
+                        Content="NewProfile"
+                        HorizontalContentAlignment="Center"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
-                        Height="50" 
-                        Width="80"
+                        Height="40" 
+                        Width="120"
                         Grid.Row="0"
-                        Grid.Column="2"
-                        Margin="20,10,0,10">Button3
+                        Grid.Column="0"
+                        Margin="340,10,0,10">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource NewGameButtonStyle}"/>
+            </Button.Style>
         </Button>
         <TextBox
-            x:Name="ProfileText" Text="{Binding ProfileName,Mode=TwoWay}" Grid.Row="0" Grid.Column="3" Width="200" >
+            x:Name="ProfileText" Text="{Binding ProfileName,Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Width="200" Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="500,10,20,10">
         </TextBox>
-        <Grid Grid.ColumnSpan="4" Grid.Row="1" >
+        <Grid Grid.ColumnSpan="4" Grid.Row="0" Margin="20,60,20,10">
             <DataGrid
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
                 x:Uid="DataTable"
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="LightGray"
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{Binding ScList,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                HorizontalContentAlignment="Stretch"
+               
                 >
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Modifier One">
