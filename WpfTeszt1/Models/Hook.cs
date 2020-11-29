@@ -15,7 +15,20 @@ namespace WpfTeszt1.Models
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
         public static List<String> combo = new List<string>();
-        public static Profile Pr { get; set; }
+        private static Profile pr;
+        public static Profile Pr 
+        {
+            get 
+            {
+                return pr;
+            }
+            set
+            {
+                pr = value;
+                checkforDupes();
+            }
+
+        }
         public static Timer t = new Timer("teszt szöveg\n", 200, false);
 
 
@@ -30,6 +43,22 @@ namespace WpfTeszt1.Models
 
         }
 
+        private static void checkforDupes()
+        {
+            foreach (var sc in pr.ShortCuts)
+            {
+                if (sc.Modifier1==sc.Modifier2)
+                {
+                    sc.Modifier2 = null;
+                }
+                if(sc.Modifier1== null && sc.Modifier2 != null)
+                {
+                    sc.Modifier1 = sc.Modifier2;
+                    sc.Modifier2 = null;
+                }
+            }
+        }
+        
         private static Keys convToKEys(string s)
         {
             switch (s)
@@ -63,19 +92,33 @@ namespace WpfTeszt1.Models
             {
                 int vkCode = Marshal.ReadInt32(lParam);
                 Console.WriteLine((Keys)vkCode);
-                foreach (var sc in Pr.ShortCuts)
+                foreach (var sc in pr.ShortCuts)
                 {
-                    if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
+                    if(sc.Modifier2 == null)
                     {
-                        if (sc.IsActive)
+                        if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == convToKEys(sc.Modifier1))
                         {
-                            t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                            if (sc.IsActive)
+                            {
+                                t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                            }
                         }
-                        
                     }
+                    else
+                    {
+                        if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
+                        {
+                            if (sc.IsActive)
+                            {
+                                t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                            }
+                        }
+                    }
+
+
+
+                    
                 }
-
-
             }
 
 
