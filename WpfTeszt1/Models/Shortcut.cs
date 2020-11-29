@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfTeszt1.Helpers;
 
 namespace WpfTeszt1.Models
 {
-    public partial class Shortcut
+    public partial class Shortcut : MyNotifyPropertyChanged
     {
         public Shortcut()
         {
@@ -30,19 +31,88 @@ namespace WpfTeszt1.Models
 
 
         public IEnumerable<String> Modifiers { get; set; }
-        public string Modifier1 { get; set; }
-        public string Modifier2 { get; set; }
+
+        private String modifier1;
+        public string Modifier1
+        {
+            get { return this.modifier1; }
+            set
+            {
+                if (value != this.modifier1)
+                {
+                    this.modifier1= value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+        private String modifier2;
+        public string Modifier2
+        {
+            get { return this.modifier2; }
+            set
+            {
+                if (value != this.modifier2)
+                {
+                    this.modifier2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         public IEnumerable<String> Speeds { get; set; }
 
-
-        public Boolean IsActive { get; set; }
-
-        public String Text { get; set; }
-
-        public String Speed { get; set; }
-
-        public String Combo { get; set; }
+        private Boolean isActive;
+        public Boolean IsActive
+        {
+            get { return this.isActive; }
+            set
+            {
+                if (value != this.isActive)
+                {
+                    this.isActive = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+        private String text;
+        public String Text
+        {
+            get { return this.text; }
+            set
+            {
+                if (value != this.text)
+                {
+                    this.text = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+        private String speed;
+        public String Speed
+        {
+            get { return this.speed; }
+            set
+            {
+                if (value != this.speed)
+                {
+                    this.speed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+        private String combo;
+        public String Combo
+        {
+            get { return this.combo; }
+            set
+            {
+                if (value != this.combo)
+                {
+                    this.combo= value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         public override String ToString()
         {

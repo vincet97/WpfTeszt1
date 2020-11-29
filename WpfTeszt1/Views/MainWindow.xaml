@@ -16,9 +16,11 @@
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="LightGray"
                 GridLinesVisibility="Horizontal"
+                SelectionChanged="DataGrid_SelectionChanged"
+                SelectionUnit="FullRow"
                 ItemsSource="{Binding ScList,UpdateSourceTrigger=PropertyChanged}"
                 >
-               <DataGrid.Columns>
+                <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Modifier One">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -34,8 +36,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Keys" Binding="{Binding Combo}" />
-                    <DataGridCheckBoxColumn  Header="Active" Binding="{Binding IsActive}" />
-                    <DataGridTemplateColumn Header="Speed" >
+                    <DataGridCheckBoxColumn  Header="Active" Binding="{Binding IsActive}"  />
+                    <DataGridTemplateColumn Header="Speed">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox x:Name="SpeedCombo" SelectedItem="{Binding Speed}" ItemsSource="{Binding Speeds}" SelectionChanged="SpeedCombo_SelectionChanged" />
