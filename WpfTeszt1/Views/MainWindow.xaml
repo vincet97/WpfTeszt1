@@ -113,17 +113,21 @@
         <TextBox
             x:Name="ProfileText" Text="{Binding ProfileName,Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Width="200" Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="500,10,20,10">
         </TextBox>
-        <Grid Grid.ColumnSpan="4" Grid.Row="0" Margin="20,60,20,10">
+        <Grid Grid.ColumnSpan="4" Grid.Row="0" Margin="20,60,20,10" x:Name="LayoutRoot"  >
             <DataGrid
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
+                VerticalAlignment="Stretch"
+               
+                HorizontalAlignment="Stretch"
+               
+                Width="Auto"
+             
                 x:Uid="DataTable"
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="LightGray"
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{Binding ScList,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                HorizontalContentAlignment="Stretch"
-               
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Stretch"
                 >
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Modifier One">
