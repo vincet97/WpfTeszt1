@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfTeszt1.Models;
-using WpfTeszt1.ViewModels;
 using WpfTeszt1.Helpers;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
 using Microsoft.Win32;
 
 namespace WpfTeszt1.ViewModels
@@ -83,37 +76,7 @@ namespace WpfTeszt1.ViewModels
             _loadedProfile = new Profile();
             _loadedProfile.Name = "First";
             _scList = new ObservableCollection<Shortcut>();
-            Shortcut c1 = new Shortcut()
-            {
-                Text = "Csami okos",
-                Combo = "A",
-                Modifier1 = "Alt",
-                Modifier2 = "Shift",
-                Speed = "2",
-                IsActive = true
-            };
-            Shortcut c2 = new Shortcut()
-            {
-                Text = "Csami okosabb",
-                Combo = "B",
-                Modifier1 = "Alt",
-                Modifier2 = "Alt",
-                Speed = "4",
-                IsActive = true
-            };
-            Shortcut c3 = new Shortcut()
-            {
-                Text = "Csami okosabbika",
-                Combo = "C",
-                Modifier1 = "Alt",
-                Modifier2 = "Shift",
-                Speed = "0",
-                IsActive = false
-            };
             
-            ScList.Add(c1);
-            ScList.Add(c2);
-            ScList.Add(c3);
             
 
 

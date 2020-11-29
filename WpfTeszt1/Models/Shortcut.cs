@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfTeszt1.Helpers;
 
 
@@ -109,7 +106,7 @@ namespace WpfTeszt1.Models
             {
                 if (value != this.combo)
                 {
-                    this.combo= value;
+                    this.combo= value[0].ToString();
                     this.NotifyPropertyChanged();
                 }
             }

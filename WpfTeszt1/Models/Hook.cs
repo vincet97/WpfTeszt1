@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using System.Linq;
 using System.Collections.ObjectModel;
 
 namespace WpfTeszt1.Models
@@ -95,26 +94,30 @@ namespace WpfTeszt1.Models
                 Console.WriteLine((Keys)vkCode);
                 foreach (var sc in pr)
                 {
-                    if(sc.Modifier2 == null)
+                    if(sc.Combo != null && sc.Speed != null & sc.Text != null && !(sc.Modifier1==null && sc.Modifier2==null))
                     {
-                        if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == convToKEys(sc.Modifier1))
+                        if (sc.Modifier2 == null)
                         {
-                            if (sc.IsActive)
+                            if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == convToKEys(sc.Modifier1))
                             {
-                                t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                                if (sc.IsActive)
+                                {
+                                    t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
+                            {
+                                if (sc.IsActive)
+                                {
+                                    t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                                }
                             }
                         }
                     }
-                    else
-                    {
-                        if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
-                        {
-                            if (sc.IsActive)
-                            {
-                                t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
-                            }
-                        }
-                    }
+                    
 
 
 
