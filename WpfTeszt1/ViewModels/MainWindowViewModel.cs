@@ -7,6 +7,10 @@ using WpfTeszt1.Models;
 using WpfTeszt1.ViewModels;
 using WpfTeszt1.Helpers;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
 
 namespace WpfTeszt1.ViewModels
 {
@@ -49,14 +53,14 @@ namespace WpfTeszt1.ViewModels
                 Modifier1 = "Alt",
                 Modifier2 = "Shift",
                 Speed = "2",
-                IsActive = false
+                IsActive = true
             };
             Shortcut c2 = new Shortcut()
             {
                 Text = "Csami okosabb",
                 Combo = "B",
                 Modifier1 = "Alt",
-                Modifier2 = "Ctr",
+                Modifier2 = "Alt",
                 Speed = "4",
                 IsActive = true
             };
@@ -69,9 +73,19 @@ namespace WpfTeszt1.ViewModels
                 Speed = "0",
                 IsActive = false
             };
+            List<Shortcut> ls = new List<Shortcut>();
+            ls.Add(c1);
+            ls.Add(c2);
+            ls.Add(c3);
+            _loadedProfile.ShortCuts = ls;
+            string jsonString = JsonSerializer.Serialize(_loadedProfile);
+            File.WriteAllText(@"D:\MyTest.txt", jsonString);
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
+            Hook.Pr = _loadedProfile;
+            Thread t1 = new Thread(Hook.Init);
+            t1.Start();
 
 
         }

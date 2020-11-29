@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace WpfTeszt1.Models
 {
     public partial class Shortcut
