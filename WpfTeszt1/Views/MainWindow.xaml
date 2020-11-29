@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTeszt1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="MainWindow" Height="450" Width="1000" MinHeight="450" MinWidth="1000">
 
     <Grid x:Name="ContentArea"  Margin="10,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="{Binding ActualWidth, 
               RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" 
@@ -91,6 +91,21 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Margin="340,10,0,10">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource NewGameButtonStyle}"/>
+            </Button.Style>
+        </Button>
+        <Button x:Name="TrackingButton" 
+                        Command="{Binding TrackingCommand}"
+                        Content="{Binding Tracking}"
+                        HorizontalContentAlignment="Center"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Height="40" 
+                        Width="120"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="740,10,0,10">
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource NewGameButtonStyle}"/>
             </Button.Style>

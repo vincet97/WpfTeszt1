@@ -20,6 +20,23 @@ namespace WpfTeszt1.ViewModels
         public RelayCommand LoadProfileCommand { get; set; }
         public RelayCommand SaveProfileCommand { get; set; }
         public RelayCommand NewProfileCommand { get; set; }
+        public RelayCommand TrackingCommand { get; set; }
+
+        private String tracking;
+        public String Tracking
+        {
+            get
+            {
+                return tracking;
+            }
+            set
+            {
+                if (value != null) {
+                    tracking = value;
+                NotifyPropertyChanged(); 
+                }
+            }
+        }
         public String ProfileName {
             get { return _loadedProfile.Name; }
             set
@@ -59,6 +76,8 @@ namespace WpfTeszt1.ViewModels
             LoadProfileCommand= new RelayCommand(LoadProfile);
             SaveProfileCommand = new RelayCommand(SaveProfile);
             NewProfileCommand = new RelayCommand(NewProfile);
+            TrackingCommand = new RelayCommand(TrackingOpt);
+            Tracking = "NoTracking";
 
             _loadedProfile = new Profile();
             _loadedProfile.Name = "First";
@@ -138,7 +157,20 @@ namespace WpfTeszt1.ViewModels
             LoadedProfile = new Profile();
             NotifyPropertyChanged();
         }
-      
+        public void TrackingOpt(object parameter)
+        {
+            System.Diagnostics.Debug.WriteLine("Tracking");
+
+            if (Tracking == "NoTracking")
+            {
+                Tracking = "Tracking";
+            }
+            else
+            {
+                Tracking = "NoTracking";
+            }
+        }
+
 
     }
 }
