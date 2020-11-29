@@ -17,7 +17,10 @@ namespace WpfTeszt1.ViewModels
     public class MainWindowViewModel : MyNotifyPropertyChanged
     {
 
-        public RelayCommand UpdateCommand { get; set; }
+        
+        public RelayCommand LoadProfileCommand { get; set; }
+        public RelayCommand SaveProfileCommand { get; set; }
+        public RelayCommand NewProfileCommand { get; set; }
 
         public ObservableCollection<Shortcut> _scList;
         public ObservableCollection<Shortcut> ScList
@@ -42,7 +45,10 @@ namespace WpfTeszt1.ViewModels
 
         public MainWindowViewModel()
         {
-            UpdateCommand = new RelayCommand(UpdateShortcut);
+            LoadProfileCommand= new RelayCommand(LoadProfile);
+            SaveProfileCommand = new RelayCommand(SaveProfile);
+            NewProfileCommand = new RelayCommand(NewProfile);
+
             _loadedProfile = new Profile();
             _loadedProfile.Name = "First";
             _scList = new ObservableCollection<Shortcut>();
@@ -79,14 +85,12 @@ namespace WpfTeszt1.ViewModels
             ls.Add(c3);
             _loadedProfile.ShortCuts = ls;
             string jsonString = JsonSerializer.Serialize(_loadedProfile);
-            File.WriteAllText(@"D:\MyTest.txt", jsonString);
-            jsonString = File.ReadAllText(@"D:\MyTest.txt");
-            _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
-
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt", jsonString);
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            Hook.Pr = ScList;
+            _loadedProfile.ShortCuts = ls;
+            Hook.Pr = _loadedProfile;
             Thread t1 = new Thread(Hook.Init);
             t1.Start();
 
@@ -100,18 +104,20 @@ namespace WpfTeszt1.ViewModels
             return str;
             
         }
-
-
-
-
-        public async Task LoadDataAsync()
-        {
-
-        }
-        public void UpdateShortcut(object parameter)
+ 
+        public void LoadProfile(object parameter)
         {
             System.Diagnostics.Debug.WriteLine("Updated");
         }
+        public void SaveProfile(object parameter)
+        {
+            System.Diagnostics.Debug.WriteLine("Updated");
+        }
+        public void NewProfile(object parameter)
+        {
+            System.Diagnostics.Debug.WriteLine("Updated");
+        }
+      
 
     }
 }

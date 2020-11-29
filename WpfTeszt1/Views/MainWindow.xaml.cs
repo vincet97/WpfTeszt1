@@ -44,6 +44,9 @@ namespace WpfTeszt1.Views
            // System.Diagnostics.Debug.WriteLine(e.OriginalSource.ToString());
         }
 
-       
+        private void FileSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
