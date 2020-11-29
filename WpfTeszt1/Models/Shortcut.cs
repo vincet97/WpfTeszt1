@@ -44,5 +44,21 @@ namespace WpfTeszt1.Models
 
         public String Combo { get; set; }
 
+        public override String ToString()
+        {
+            String str = Text;
+            str += ":";
+            str += Speed;
+            str += ":";
+            str += IsActive.ToString();
+            str += ":";
+            str += Modifier1;
+            str += ":";
+            str += Modifier2;
+            str += "\n";
+            return str;
+
+        }
+
     }
 }
