@@ -80,10 +80,13 @@ namespace WpfTeszt1.ViewModels
             _loadedProfile.ShortCuts = ls;
             string jsonString = JsonSerializer.Serialize(_loadedProfile);
             File.WriteAllText(@"D:\MyTest.txt", jsonString);
+            jsonString = File.ReadAllText(@"D:\MyTest.txt");
+            _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
+
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            Hook.Pr = _loadedProfile;
+            Hook.Pr = ScList;
             Thread t1 = new Thread(Hook.Init);
             t1.Start();
 

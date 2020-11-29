@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace WpfTeszt1.Models
 {
@@ -15,8 +16,8 @@ namespace WpfTeszt1.Models
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
         public static List<String> combo = new List<string>();
-        private static Profile pr;
-        public static Profile Pr 
+        private static ObservableCollection<Shortcut> pr;
+        public static ObservableCollection<Shortcut> Pr 
         {
             get 
             {
@@ -45,7 +46,7 @@ namespace WpfTeszt1.Models
 
         private static void checkforDupes()
         {
-            foreach (var sc in pr.ShortCuts)
+            foreach (var sc in pr)
             {
                 if (sc.Modifier1==sc.Modifier2)
                 {
@@ -92,7 +93,7 @@ namespace WpfTeszt1.Models
             {
                 int vkCode = Marshal.ReadInt32(lParam);
                 Console.WriteLine((Keys)vkCode);
-                foreach (var sc in pr.ShortCuts)
+                foreach (var sc in pr)
                 {
                     if(sc.Modifier2 == null)
                     {
