@@ -19,17 +19,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Button x:Name="FileSelectButton" 
-                        Command=""
+                        Command="{Binding LoadProfileCommand}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
                         Height="50" 
                         Width="80"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="20,10,0,10">Button1
+                        Margin="20,10,0,10"
+                        >Button1
         </Button>
         <Button x:Name="SaveProfileButton" 
-                        
+                        Command="{Binding SaveProfileCommand}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
                         Height="50" 
@@ -39,7 +40,7 @@
                         Margin="20,10,0,10">Button2
         </Button>
         <Button x:Name="NewProfileButton" 
-                        
+                        Command="{Binding NewProfileCommand}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
                         Height="50" 
