@@ -106,6 +106,15 @@ namespace WpfTeszt1.ViewModels
             o.ShowDialog();
             String sr = o.FileName;
             System.Diagnostics.Debug.WriteLine("Updated : " + sr);
+
+            string jsonString = File.ReadAllText(sr);
+            _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
+            ScList.Clear();
+            foreach (var sc in _loadedProfile.ShortCuts)
+            {
+                ScList.Add(sc);
+            }
+
         }
         public void SaveProfile(object parameter)
         {
