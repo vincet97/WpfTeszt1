@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfTeszt1.ViewModels;
+using WpfTeszt1.Views;
+using WpfTeszt1.Helpers;
 
 namespace WpfTeszt1
 {
