@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -30,23 +32,18 @@ namespace WpfTeszt1.Views
             this.DataContext = ViewModel;
         }
 
-        private void ModifCombo1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Az Argumentek");
-            System.Diagnostics.Debug.WriteLine( ViewModel.ToString());
-           
-        }
-
-        private void ModifCombo2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Az Argumentek");
-            System.Diagnostics.Debug.WriteLine(ViewModel.ToString());
-        }
-
         private void SpeedCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Az Argumentek");
-            System.Diagnostics.Debug.WriteLine(ViewModel.ToString());
+           // System.Diagnostics.Debug.WriteLine("Az Argumentek");
+            String str = ((ComboBox)sender).SelectedItem as String;
+            
+            
+            
+           System.Diagnostics.Debug.WriteLine(ViewModel.ToString());
+           // System.Diagnostics.Debug.WriteLine(str);
+           // System.Diagnostics.Debug.WriteLine(e.OriginalSource.ToString());
         }
+
+       
     }
 }

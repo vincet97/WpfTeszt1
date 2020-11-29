@@ -16,29 +16,29 @@
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="LightGray"
                 GridLinesVisibility="Horizontal"
-                ItemsSource="{Binding ScList,UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding ScList,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 >
-               <DataGrid.Columns>
+                <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Modifier One">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox x:Name="ModifCombo1" SelectedItem="{Binding Modifier1}" ItemsSource="{Binding Modifiers}" SelectionChanged="ModifCombo1_SelectionChanged"  />
+                                <ComboBox x:Name="ModifCombo1" SelectedItem="{Binding Modifier1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Modifiers}"   />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Modifier Two">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox x:Name="ModifCombo2"  SelectedItem="{Binding Modifier2}" ItemsSource="{Binding Modifiers}" SelectionChanged="ModifCombo2_SelectionChanged"  />
+                                <ComboBox x:Name="ModifCombo2"  SelectedItem="{Binding Modifier2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Modifiers}"  />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Keys" Binding="{Binding Combo}" />
-                    <DataGridCheckBoxColumn  Header="Active" Binding="{Binding IsActive}" />
-                    <DataGridTemplateColumn Header="Speed" >
+                    <DataGridCheckBoxColumn  Header="Active" Binding="{Binding IsActive}"  />
+                    <DataGridTemplateColumn Header="Speed">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox x:Name="SpeedCombo" SelectedItem="{Binding Speed}" ItemsSource="{Binding Speeds}" SelectionChanged="SpeedCombo_SelectionChanged" />
+                                <ComboBox x:Name="SpeedCombo" SelectedItem="{Binding Speed, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Speeds}" SelectionChanged="SpeedCombo_SelectionChanged"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
