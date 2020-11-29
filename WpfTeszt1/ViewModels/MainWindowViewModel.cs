@@ -172,7 +172,6 @@ namespace WpfTeszt1.ViewModels
             {
                 Tracking = "NoTracking";
                 t1.Abort();
-
             }
         }
 
