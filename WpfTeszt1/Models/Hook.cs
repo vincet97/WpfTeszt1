@@ -16,7 +16,7 @@ namespace WpfTeszt1.Models
         private static IntPtr _hookID = IntPtr.Zero;
         public static List<String> combo = new List<string>();
         public static Profile Pr { get; set; }
-        public static Timer t = new Timer("most jol printeltem a szoveget\n", 200, false);
+        public static Timer t = new Timer("teszt szöveg\n", 200, false);
 
 
 
@@ -26,7 +26,7 @@ namespace WpfTeszt1.Models
             _hookID = SetHook(_proc);
             Application.Run();
             UnhookWindowsHookEx(_hookID);
-            t.SetTimer();
+            t.SetTimer(200, "teszt szöveg\n");
 
         }
 
@@ -65,10 +65,13 @@ namespace WpfTeszt1.Models
                 Console.WriteLine((Keys)vkCode);
                 foreach (var sc in Pr.ShortCuts)
                 {
-                    if (sc.Combo == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
+                    if (sc.Combo.ToUpper() == ((Keys)vkCode).ToString() && Control.ModifierKeys == (convToKEys(sc.Modifier1) | convToKEys(sc.Modifier2)))
                     {
-                        Console.WriteLine((Keys)vkCode);
-                        t.SetTimer();
+                        if (sc.IsActive)
+                        {
+                            t.SetTimer(Int32.Parse(sc.Speed), sc.Text);
+                        }
+                        
                     }
                 }
 

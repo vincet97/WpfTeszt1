@@ -27,14 +27,34 @@ namespace WpfTeszt1.Models
         {
             this.index = 0;
         }
-        public void SetTimer()
+        public void SetTimer(int time , string t)
         {
             if (aTimer != null)
             {
                 aTimer.Dispose();
             }
+            interval = time;
+            text = t;
+            
+            if (interval == 0)
+            {
+                paste = true;
+            }
+            else
+            {
+                paste = false;
+            }
             // Create a timer with the selected interval.
-            aTimer = new System.Timers.Timer(interval);
+            if (paste)
+            {
+                aTimer = new System.Timers.Timer(200);
+            }
+            else
+            {
+                aTimer = new System.Timers.Timer(interval * 100);
+            }
+            
+
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
