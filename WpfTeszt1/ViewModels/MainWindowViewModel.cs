@@ -110,9 +110,10 @@ namespace WpfTeszt1.ViewModels
         {
             System.Diagnostics.Debug.WriteLine("Updated");
             OpenFileDialog o = new OpenFileDialog();
+            o.InitialDirectory=AppDomain.CurrentDomain.BaseDirectory + @"Profiles\";
             o.ShowDialog();
             String sr = o.FileName;
-            System.Diagnostics.Debug.WriteLine("Updated : " + sr);
+            System.Diagnostics.Debug.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
         }
         public void SaveProfile(object parameter)
         {
@@ -121,6 +122,9 @@ namespace WpfTeszt1.ViewModels
         public void NewProfile(object parameter)
         {
             System.Diagnostics.Debug.WriteLine("Updated");
+            ScList.Clear();
+            LoadedProfile = new Profile();
+            NotifyPropertyChanged();
         }
       
 
