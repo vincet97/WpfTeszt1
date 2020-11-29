@@ -77,8 +77,11 @@ namespace WpfTeszt1.ViewModels
         }
         public override String ToString()
         {
-            String rn = _loadedProfile.ToString();
-            return rn;
+            String str = "Shorcutok Listája:\n";
+            foreach (var item in ScList)
+                str += item.ToString();
+            return str;
+            
         }
 
 
