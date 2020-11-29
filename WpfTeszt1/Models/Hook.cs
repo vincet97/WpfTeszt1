@@ -14,7 +14,6 @@ namespace WpfTeszt1.Models
         private const int WM_SYSKEYDOWN = 0x104;
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
-        public static List<String> combo = new List<string>();
         private static ObservableCollection<Shortcut> pr;
         public static ObservableCollection<Shortcut> Pr 
         {
