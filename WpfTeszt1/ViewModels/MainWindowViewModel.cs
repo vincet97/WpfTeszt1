@@ -45,7 +45,7 @@ namespace WpfTeszt1.ViewModels
 
         public MainWindowViewModel()
         {
-            LoadProfileCommand= new RelayCommand(UpdateShortcut);
+            LoadProfileCommand= new RelayCommand(LoadProfile);
             SaveProfileCommand = new RelayCommand(SaveProfile);
             NewProfileCommand = new RelayCommand(NewProfile);
 
@@ -104,14 +104,7 @@ namespace WpfTeszt1.ViewModels
             return str;
             
         }
-
-
-
-
-        public async Task LoadDataAsync()
-        {
-
-        }
+ 
         public void LoadProfile(object parameter)
         {
             System.Diagnostics.Debug.WriteLine("Updated");
