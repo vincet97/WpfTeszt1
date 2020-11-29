@@ -79,18 +79,11 @@ namespace WpfTeszt1.ViewModels
                 Speed = "0",
                 IsActive = false
             };
-            List<Shortcut> ls = new List<Shortcut>();
-            ls.Add(c1);
-            ls.Add(c2);
-            ls.Add(c3);
-            _loadedProfile.ShortCuts = ls;
-            string jsonString = JsonSerializer.Serialize(_loadedProfile);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt", jsonString);
+            
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            _loadedProfile.ShortCuts = ls;
-            Hook.Pr = _loadedProfile;
+            Hook.Pr = ScList;
             Thread t1 = new Thread(Hook.Init);
             t1.Start();
 
@@ -107,11 +100,24 @@ namespace WpfTeszt1.ViewModels
  
         public void LoadProfile(object parameter)
         {
-            System.Diagnostics.Debug.WriteLine("Updated");
+            System.Diagnostics.Debug.WriteLine("Loaded");
+            string jsonString = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt");
+            _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
+            ScList.Clear();
+            foreach(var sc in _loadedProfile.ShortCuts)
+            {
+                ScList.Add(sc);
+            }
         }
         public void SaveProfile(object parameter)
         {
-            System.Diagnostics.Debug.WriteLine("Updated");
+            System.Diagnostics.Debug.WriteLine("Saved");
+            foreach (var sc in ScList)
+            {
+                _loadedProfile.ShortCuts.Add(sc);
+            }
+            string jsonString = JsonSerializer.Serialize(_loadedProfile);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt", jsonString);
         }
         public void NewProfile(object parameter)
         {
