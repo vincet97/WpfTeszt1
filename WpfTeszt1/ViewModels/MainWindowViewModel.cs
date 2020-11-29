@@ -94,7 +94,7 @@ namespace WpfTeszt1.ViewModels
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            Hook.Sc = ScList;
+            Hook.Pr = ScList;
             Thread t1 = new Thread(Hook.Init);
             t1.Start();
 
