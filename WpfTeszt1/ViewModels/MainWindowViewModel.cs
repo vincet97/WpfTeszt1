@@ -11,6 +11,7 @@ using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
+using Microsoft.Win32;
 
 namespace WpfTeszt1.ViewModels
 {
@@ -100,14 +101,11 @@ namespace WpfTeszt1.ViewModels
  
         public void LoadProfile(object parameter)
         {
-            System.Diagnostics.Debug.WriteLine("Loaded");
-            string jsonString = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\MyTest.txt");
-            _loadedProfile = JsonSerializer.Deserialize<Profile>(jsonString);
-            ScList.Clear();
-            foreach(var sc in _loadedProfile.ShortCuts)
-            {
-                ScList.Add(sc);
-            }
+            System.Diagnostics.Debug.WriteLine("Updated");
+            OpenFileDialog o = new OpenFileDialog();
+            o.ShowDialog();
+            String sr = o.FileName;
+            System.Diagnostics.Debug.WriteLine("Updated : " + sr);
         }
         public void SaveProfile(object parameter)
         {
