@@ -50,6 +50,7 @@ namespace WpfTeszt1.ViewModels
 
         }
 
+        private Thread t1;
         public ObservableCollection<Shortcut> _scList;
         public ObservableCollection<Shortcut> ScList
         {
@@ -113,9 +114,7 @@ namespace WpfTeszt1.ViewModels
             ScList.Add(c1);
             ScList.Add(c2);
             ScList.Add(c3);
-            Hook.Pr = ScList;
-            Thread t1 = new Thread(Hook.Init);
-            t1.Start();
+            
 
 
         }
@@ -164,10 +163,16 @@ namespace WpfTeszt1.ViewModels
             if (Tracking == "NoTracking")
             {
                 Tracking = "Tracking";
+                Hook.Pr = ScList;
+                t1 = new Thread(Hook.Init);
+                t1.Start();
+
             }
             else
             {
                 Tracking = "NoTracking";
+                t1.Abort();
+
             }
         }
 
