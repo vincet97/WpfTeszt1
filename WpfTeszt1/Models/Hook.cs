@@ -16,17 +16,16 @@ namespace WpfTeszt1.Models
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
         public static List<String> combo = new List<string>();
-
-        private static ObservableCollection<Shortcut> sc;
-        public static ObservableCollection<Shortcut> Sc 
+        private static ObservableCollection<Shortcut> pr;
+        public static ObservableCollection<Shortcut> Pr 
         {
             get 
             {
-                return sc;
+                return pr;
             }
             set
             {
-                sc = value;
+                pr = value;
                 checkforDupes();
             }
 
@@ -47,7 +46,7 @@ namespace WpfTeszt1.Models
 
         private static void checkforDupes()
         {
-            foreach (var sc in sc)
+            foreach (var sc in pr)
             {
                 if (sc.Modifier1==sc.Modifier2)
                 {
@@ -94,7 +93,7 @@ namespace WpfTeszt1.Models
             {
                 int vkCode = Marshal.ReadInt32(lParam);
                 Console.WriteLine((Keys)vkCode);
-                foreach (var sc in sc)
+                foreach (var sc in pr)
                 {
                     if(sc.Modifier2 == null)
                     {
